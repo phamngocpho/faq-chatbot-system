@@ -1,49 +1,49 @@
-# AI Microservice (PHP 8.3 + Symfony)
+# AI Microservice (PHP Symfony)
 
-AI service để xử lý câu hỏi của người dùng và trả lời dựa trên dữ liệu FAQ thông qua Google Gemini API.
+AI-powered service for processing user questions and generating intelligent responses based on FAQ data using Google Gemini API.
 
-## Yêu cầu
+## Requirements
 
-- PHP 8.3 hoặc cao hơn
+- PHP 8.2 or higher
 - Composer
-- Google Gemini API Key (miễn phí tại https://aistudio.google.com/api-keys)
+- Google Gemini API Key (free at https://makersuite.google.com/app/apikey)
 
-## Cài đặt
+## Installation
 
-1. Cài đặt dependencies:
+1. Install dependencies:
 ```bash
 cd ai-service
 composer install
 ```
 
-2. Cấu hình environment:
+2. Configure environment:
 ```bash
 cp .env.example .env
 ```
 
-Sửa file `.env`:
+Edit `.env`:
 ```
 GEMINI_API_KEY=your-gemini-api-key-here
-GEMINI_MODEL=gemini-2.5-flash
+GEMINI_MODEL=gemini-1.5-flash
 BACKEND_API_URL=http://localhost:3000/api
 ```
 
-3. Chạy server (development):
+3. Start development server:
 ```bash
 php -S localhost:8000 -t public
 ```
 
-Hoặc dùng Symfony CLI:
+Or using Symfony CLI:
 ```bash
 symfony server:start
 ```
 
-## Lấy Gemini API Key
+## Getting Gemini API Key
 
-1. Truy cập: https://aistudio.google.com/api-keys
-2. Đăng nhập bằng Google Account
+1. Visit: https://makersuite.google.com/app/apikey
+2. Sign in with Google Account
 3. Click "Create API Key"
-4. Copy key và paste vào file `.env`
+4. Copy key and paste into `.env` file
 
 ## API Endpoints
 
@@ -58,17 +58,18 @@ Response:
   "status": "ok",
   "service": "FAQ AI Microservice",
   "ai_provider": "Google Gemini",
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "timestamp": "2024-01-01 10:00:00"
 }
 ```
 
-### Get Answer
+### Get AI Answer
 ```
 POST http://localhost:8000/api/get-answer
 Content-Type: application/json
 
 {
-  "question": "Cửa hàng mở cửa lúc mấy giờ?",
+  "question": "What are your opening hours?",
   "session_id": "optional-session-id"
 }
 ```
@@ -78,46 +79,47 @@ Response:
 {
   "success": true,
   "data": {
-    "question": "Cửa hàng mở cửa lúc mấy giờ?",
-    "answer": "Chúng tôi mở cửa từ 8:00 đến 21:00 mỗi ngày kể cả cuối tuần.",
+    "question": "What are your opening hours?",
+    "answer": "We're open from 8:00 AM to 9:00 PM every day including weekends.",
     "session_id": "session_123",
     "timestamp": "2024-01-01 10:00:00"
   }
 }
 ```
 
-## Test với Postman
+## Testing with Postman
 
 1. Health check:
 ```
 GET http://localhost:8000/
 ```
 
-2. Gửi câu hỏi:
+2. Ask a question:
 ```
 POST http://localhost:8000/api/get-answer
 Content-Type: application/json
 
 {
-  "question": "Giá áo thun bao nhiêu?"
+  "question": "How much is a t-shirt?"
 }
 ```
 
-## Lưu ý
+## Important Notes
 
-- Đảm bảo Backend API (ExpressJS) đang chạy ở port 3000
-- Cần có Gemini API key hợp lệ (miễn phí)
-- Model mặc định: gemini-2.5-flash (nhanh và miễn phí)
-- Có thể đổi sang gemini-2.5-pro trong file .env (mạnh hơn)
+- Ensure Backend API (ExpressJS) is running on port 3000
+- Valid Gemini API key required (free tier available)
+- Default model: gemini-1.5-flash (fast and free)
+- Can switch to gemini-1.5-pro in `.env` for more detailed responses
 
-## Ưu điểm Gemini
+## Gemini Advantages
 
-- Miễn phí (5 requests/phút)
-- Hỗ trợ tiếng Việt tốt
-- Nhanh và chính xác
-- Không cần thẻ tín dụng
+- Free tier (60 requests/minute)
+- No credit card required
+- Excellent Vietnamese language support
+- Fast and accurate responses
+- Easy integration
 
-## Cấu trúc
+## Project Structure
 
 ```
 ai-service/
@@ -142,8 +144,52 @@ ai-service/
 
 ## Workflow
 
-1. Nhận câu hỏi từ client
-2. Gọi API Backend để lấy toàn bộ FAQs
-3. Format FAQs thành context cho AI
-4. Gửi request tới Gemini với prompt + context
-5. Trả về câu trả lời cho client
+1. Receive question from client
+2. Call Backend API to fetch all FAQs
+3. Format FAQs as context for AI
+4. Send request to Gemini with prompt + context
+5. Return AI-generated answer to client
+
+## Architecture
+
+This microservice acts as the "brain" of the chatbot system:
+- Decoupled from main backend
+- Specialized AI processing
+- Easy to scale independently
+- Can switch AI providers without affecting other services
+
+## Error Handling
+
+The service includes comprehensive error handling:
+- Invalid requests (400)
+- Missing FAQs (503)
+- Gemini API errors (500)
+- Detailed error messages for debugging
+
+## Configuration
+
+### Available Models
+
+- `gemini-1.5-flash` - Fast, free, recommended for most use cases
+- `gemini-1.5-pro` - More powerful, detailed responses
+- `gemini-pro` - Stable, general purpose
+
+### Temperature Setting
+
+Adjust in `GeminiService.php`:
+- `0.0` - Deterministic, consistent answers
+- `0.7` - Balanced (default)
+- `1.0` - Creative, varied responses
+
+## Low-Code Principles
+
+This service demonstrates:
+- Microservices architecture
+- API-first design
+- AI integration without complex ML setup
+- Configuration over code
+- Minimal business logic
+
+## License
+
+MIT License - Educational purposes

@@ -1,30 +1,39 @@
 # FAQ Chatbot System
 
-Hệ thống chatbot AI để trả lời câu hỏi thường gặp (FAQ).
+An intelligent FAQ chatbot system built with modern low-code/no-code principles, combining traditional backend services with AI automation.
 
-## Cấu trúc project
+## Project Structure
 
 ```
 faq-chatbot/
 ├── backend/          # ExpressJS + MySQL API
 ├── admin-frontend/   # Vue.js Admin Panel
-├── ai-service/       # PHP Symfony AI Service (sẽ làm tiếp)
-├── livechat/         # Frontend Chat (sẽ làm tiếp)
-└── database.sql      # SQL script
+├── ai-service/       # PHP Symfony AI Service
+├── livechat/         # Frontend Chat (coming soon)
+└── database.sql      # SQL schema
 ```
 
-## Hướng dẫn cài đặt
+## Architecture Overview
 
-### Bước 1: Setup Database
+This project demonstrates a microservices architecture with:
+- **Backend API** (ExpressJS) - Data management layer
+- **Admin Panel** (Vue.js) - Content management interface
+- **AI Service** (PHP Symfony) - AI processing microservice
+- **Workflow Automation** (n8n) - Integration layer (coming soon)
+- **Livechat** (Frontend) - User interface (coming soon)
 
-1. Tạo database MySQL:
+## Installation Guide
+
+### Step 1: Database Setup
+
+1. Create MySQL database:
 ```bash
 mysql -u root -p < database.sql
 ```
 
-Hoặc import file `database.sql` vào MySQL Workbench/phpMyAdmin.
+Or import `database.sql` via MySQL Workbench/phpMyAdmin.
 
-### Bước 2: Setup Backend (ExpressJS)
+### Step 2: Backend Setup (ExpressJS)
 
 ```bash
 cd backend
@@ -32,7 +41,7 @@ npm install
 cp .env.example .env
 ```
 
-Sửa file `.env` với thông tin database của bạn:
+Configure `.env` with your database credentials:
 ```
 DB_HOST=localhost
 DB_USER=root
@@ -40,14 +49,14 @@ DB_PASSWORD=your_password
 DB_NAME=faq_chatbot
 ```
 
-Chạy server:
+Start the server:
 ```bash
 npm run dev
 ```
 
-Backend sẽ chạy tại: http://localhost:3000
+Backend runs at: http://localhost:3000
 
-### Bước 3: Setup Admin Frontend (Vue.js)
+### Step 3: Admin Frontend Setup (Vue.js)
 
 ```bash
 cd admin-frontend
@@ -55,9 +64,9 @@ npm install
 npm run dev
 ```
 
-Admin panel sẽ chạy tại: http://localhost:5173
+Admin panel runs at: http://localhost:5173
 
-### Bước 4: Setup AI Service (PHP Symfony)
+### Step 4: AI Service Setup (PHP Symfony)
 
 ```bash
 cd ai-service
@@ -65,54 +74,54 @@ composer install
 cp .env.example .env
 ```
 
-Sửa file `.env` với Gemini API key của bạn:
+Configure `.env` with your Gemini API key:
 ```
 GEMINI_API_KEY=your-gemini-api-key-here
 ```
 
-Lấy Gemini API key miễn phí tại: https://makersuite.google.com/app/apikey
+Get free Gemini API key at: https://makersuite.google.com/app/apikey
 
-Chạy server:
+Start the server:
 ```bash
 php -S localhost:8000 -t public
 ```
 
-AI Service sẽ chạy tại: http://localhost:8000
+AI Service runs at: http://localhost:8000
 
-## Test AI Service với Postman
+## API Testing with Postman
 
-### 1. Lấy danh sách FAQs
+### 1. Get all FAQs
 ```
 GET http://localhost:3000/api/faqs
 ```
 
-### 2. Tạo FAQ mới
+### 2. Create new FAQ
 ```
 POST http://localhost:3000/api/faqs
 Content-Type: application/json
 
 {
   "category_id": 1,
-  "question": "Có giao hàng tận nơi không?",
-  "answer": "Có, chúng tôi giao hàng toàn quốc.",
-  "keywords": "giao hàng, ship, delivery"
+  "question": "Do you offer delivery?",
+  "answer": "Yes, we deliver nationwide.",
+  "keywords": "delivery, ship, shipping"
 }
 ```
 
-### 3. Cập nhật FAQ
+### 3. Update FAQ
 ```
 PUT http://localhost:3000/api/faqs/1
 Content-Type: application/json
 
 {
-  "question": "Cửa hàng mở cửa lúc mấy giờ?",
-  "answer": "Chúng tôi mở cửa từ 8:00 đến 22:00 mỗi ngày.",
+  "question": "What are your opening hours?",
+  "answer": "We're open from 8:00 AM to 9:00 PM daily.",
   "category_id": 1,
-  "keywords": "giờ mở cửa, open"
+  "keywords": "hours, open, time"
 }
 ```
 
-### 4. Xóa FAQ
+### 4. Delete FAQ
 ```
 DELETE http://localhost:3000/api/faqs/1
 ```
@@ -123,7 +132,7 @@ POST http://localhost:8000/api/get-answer
 Content-Type: application/json
 
 {
-  "question": "Cửa hàng mở cửa lúc mấy giờ?"
+  "question": "What are your opening hours?"
 }
 ```
 
@@ -132,26 +141,53 @@ Response:
 {
   "success": true,
   "data": {
-    "question": "Cửa hàng mở cửa lúc mấy giờ?",
-    "answer": "Chúng tôi mở cửa từ 8:00 đến 21:00 mỗi ngày kể cả cuối tuần.",
+    "question": "What are your opening hours?",
+    "answer": "We're open from 8:00 AM to 9:00 PM every day including weekends.",
     "session_id": "session_xxx",
     "timestamp": "2024-01-01 10:00:00"
   }
 }
 ```
 
-## Các bước tiếp theo
+## Development Roadmap
 
-- [x] Bước 1: Backend ExpressJS + MySQL ✅
-- [x] Bước 2: Admin Frontend Vue.js ✅
-- [x] Bước 3: AI Microservice (PHP Symfony + OpenAI) ✅
-- [ ] Bước 4: Setup n8n Workflow
-- [ ] Bước 5: Build Livechat Frontend
+- [x] Step 1: Backend ExpressJS + MySQL ✅
+- [x] Step 2: Admin Frontend Vue.js ✅
+- [x] Step 3: AI Microservice (PHP Symfony + Gemini) ✅
+- [ ] Step 4: n8n Workflow Automation
+- [ ] Step 5: Livechat Frontend
 
 ## Tech Stack
 
-- Backend: Node.js + Express.js
-- Database: MySQL 8.0
-- Admin Frontend: Vue.js 3 + Vite
-- AI Service: PHP 8.3 + Symfony + Google Gemini
-- Workflow: n8n (coming soon)
+- **Backend**: Node.js + Express.js
+- **Database**: MySQL 8.0
+- **Admin Frontend**: Vue.js 3 + Vite
+- **AI Service**: PHP 8.2+ + Symfony + Google Gemini
+- **Workflow**: n8n (coming soon)
+
+## Low-Code/No-Code Principles
+
+This project demonstrates:
+- **Microservices Architecture** - Separation of concerns
+- **API-First Design** - RESTful interfaces
+- **AI Integration** - Google Gemini for intelligent responses
+- **Workflow Automation** - n8n for orchestration (coming soon)
+- **Minimal Code** - Leveraging frameworks and services
+
+## Features
+
+- ✅ CRUD operations for FAQ management
+- ✅ Category-based organization
+- ✅ AI-powered responses using Google Gemini
+- ✅ Modern, minimal admin interface
+- ✅ RESTful API architecture
+- ✅ Session tracking
+- ✅ Keyword-based search optimization
+
+## Contributing
+
+This is an educational project for the "Low Code, No Code & Automation" course.
+
+## License
+
+MIT License - Feel free to use for learning purposes.

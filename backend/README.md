@@ -1,20 +1,32 @@
 # FAQ Backend API
 
-## Cài đặt
+ExpressJS REST API for FAQ management with MySQL database.
 
-1. Copy file `.env.example` thành `.env` và cấu hình database:
+## Installation
+
+1. Copy environment file:
 ```bash
 cp .env.example .env
 ```
 
-2. Cài đặt dependencies:
+2. Configure database in `.env`:
+```
+PORT=3000
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=your_password
+DB_NAME=faq_chatbot
+DB_PORT=3306
+```
+
+3. Install dependencies:
 ```bash
 npm install
 ```
 
-3. Tạo database MySQL bằng script SQL đã cung cấp
+4. Create database using the SQL script in project root
 
-4. Chạy server:
+5. Start server:
 ```bash
 npm run dev
 ```
@@ -22,25 +34,86 @@ npm run dev
 ## API Endpoints
 
 ### Categories
-- `GET /api/categories` - Lấy danh sách categories
-- `POST /api/categories` - Tạo category mới
+- `GET /api/categories` - Get all categories
+- `POST /api/categories` - Create new category
 
 ### FAQs
-- `GET /api/faqs` - Lấy tất cả FAQs
-- `GET /api/faqs/:id` - Lấy FAQ theo ID
-- `POST /api/faqs` - Tạo FAQ mới
-- `PUT /api/faqs/:id` - Cập nhật FAQ
-- `DELETE /api/faqs/:id` - Xóa FAQ
+- `GET /api/faqs` - Get all FAQs
+- `GET /api/faqs/:id` - Get FAQ by ID
+- `POST /api/faqs` - Create new FAQ
+- `PUT /api/faqs/:id` - Update FAQ
+- `DELETE /api/faqs/:id` - Delete FAQ
 
-## Test với Postman
+## Testing with Postman
 
-### Tạo FAQ mới:
+### Create new FAQ:
 ```json
 POST http://localhost:3000/api/faqs
+Content-Type: application/json
+
 {
   "category_id": 1,
-  "question": "Cửa hàng mở cửa lúc mấy giờ?",
-  "answer": "Chúng tôi mở cửa từ 8:00 đến 21:00 mỗi ngày.",
-  "keywords": "giờ mở cửa, open"
+  "question": "What are your opening hours?",
+  "answer": "We're open from 8:00 AM to 9:00 PM daily.",
+  "keywords": "hours, open, time"
 }
 ```
+
+### Get all FAQs:
+```
+GET http://localhost:3000/api/faqs
+```
+
+Response:
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": 1,
+      "category_id": 1,
+      "category_name": "Hours & Location",
+      "question": "What are your opening hours?",
+      "answer": "We're open from 8:00 AM to 9:00 PM daily.",
+      "keywords": "hours, open, time",
+      "is_active": 1,
+      "created_at": "2024-01-01 10:00:00"
+    }
+  ]
+}
+```
+
+## Project Structure
+
+```
+backend/
+├── config/
+│   └── database.js       # MySQL connection
+├── controllers/
+│   ├── faqController.js  # FAQ business logic
+│   └── categoryController.js
+├── routes/
+│   ├── faqRoutes.js      # FAQ endpoints
+│   └── categoryRoutes.js
+├── server.js             # Entry point
+├── package.json
+└── .env                  # Configuration
+```
+
+## Features
+
+- RESTful API design
+- MySQL database integration
+- CORS enabled for frontend access
+- Environment-based configuration
+- Error handling
+- Input validation
+
+## Tech Stack
+
+- Node.js 18+
+- Express.js 4.x
+- MySQL2 (Promise-based)
+- dotenv for configuration
+- body-parser for JSON parsing
+- CORS middleware
