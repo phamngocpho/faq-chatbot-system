@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <h1>📋 Quản lý FAQ</h1>
+      <h1>Quản lý FAQ</h1>
     </header>
     
     <main>
@@ -178,65 +178,78 @@ export default {
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f5f5f5;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+  background: #fafafa;
+  color: #1a1a1a;
 }
 
 #app {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 24px;
 }
 
 header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 30px;
-  border-radius: 10px;
-  margin-bottom: 30px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  background: #ffffff;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 24px 32px;
+  margin: -24px -24px 32px -24px;
 }
 
 header h1 {
-  font-size: 28px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #1a1a1a;
+  letter-spacing: -0.02em;
 }
 
 main {
   display: grid;
-  gap: 30px;
+  gap: 24px;
 }
 
 .form-section, .table-section {
-  background: white;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 8px;
+  border: 1px solid #e5e5e5;
 }
 
 h2 {
-  color: #333;
+  color: #1a1a1a;
   margin-bottom: 20px;
-  font-size: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 16px;
 }
 
 label {
   display: block;
-  margin-bottom: 5px;
-  color: #555;
+  margin-bottom: 6px;
+  color: #525252;
+  font-size: 14px;
   font-weight: 500;
 }
 
 input, textarea, select {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  padding: 10px 12px;
+  border: 1px solid #d4d4d4;
+  border-radius: 6px;
   font-size: 14px;
   font-family: inherit;
+  background: #ffffff;
+  transition: all 0.2s;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #1a1a1a;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
 }
 
 textarea {
@@ -245,58 +258,62 @@ textarea {
 
 .form-actions {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   margin-top: 20px;
 }
 
 button {
-  padding: 10px 20px;
+  padding: 10px 16px;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
   font-size: 14px;
   font-weight: 500;
-  transition: all 0.3s;
+  transition: all 0.2s;
 }
 
 .btn-primary {
-  background: #667eea;
+  background: #1a1a1a;
   color: white;
 }
 
 .btn-primary:hover {
-  background: #5568d3;
+  background: #000000;
 }
 
 .btn-secondary {
-  background: #6c757d;
-  color: white;
+  background: #f5f5f5;
+  color: #525252;
+  border: 1px solid #d4d4d4;
 }
 
 .btn-secondary:hover {
-  background: #5a6268;
+  background: #e5e5e5;
 }
 
 .btn-edit {
-  background: #ffc107;
-  color: #333;
-  padding: 5px 12px;
+  background: #f5f5f5;
+  color: #525252;
+  padding: 6px 12px;
   font-size: 13px;
+  border: 1px solid #d4d4d4;
 }
 
 .btn-edit:hover {
-  background: #e0a800;
+  background: #e5e5e5;
 }
 
 .btn-delete {
-  background: #dc3545;
-  color: white;
-  padding: 5px 12px;
+  background: #ffffff;
+  color: #dc2626;
+  padding: 6px 12px;
   font-size: 13px;
+  border: 1px solid #fecaca;
 }
 
 .btn-delete:hover {
-  background: #c82333;
+  background: #fef2f2;
+  border-color: #dc2626;
 }
 
 table {
@@ -305,38 +322,65 @@ table {
 }
 
 thead {
-  background: #f8f9fa;
+  background: #fafafa;
+  border-bottom: 1px solid #e5e5e5;
 }
 
 th, td {
   padding: 12px;
   text-align: left;
-  border-bottom: 1px solid #dee2e6;
+  border-bottom: 1px solid #f5f5f5;
+  font-size: 14px;
 }
 
 th {
   font-weight: 600;
-  color: #495057;
+  color: #525252;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+td {
+  color: #1a1a1a;
+}
+
+tbody tr:hover {
+  background: #fafafa;
 }
 
 .actions {
   display: flex;
-  gap: 5px;
+  gap: 6px;
 }
 
 .loading {
   text-align: center;
   padding: 40px;
-  color: #666;
+  color: #a3a3a3;
+  font-size: 14px;
 }
 
 @media (max-width: 768px) {
+  #app {
+    padding: 16px;
+  }
+  
+  header {
+    padding: 20px;
+    margin: -16px -16px 24px -16px;
+  }
+  
+  .form-section, .table-section {
+    padding: 20px;
+  }
+  
   table {
-    font-size: 12px;
+    font-size: 13px;
   }
   
   th, td {
-    padding: 8px;
+    padding: 10px 8px;
   }
 }
 </style>
