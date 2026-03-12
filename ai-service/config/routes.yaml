@@ -1,0 +1,9 @@
+get_answer:
+    path: /api/get-answer
+    controller: App\Controller\AiController::getAnswer
+    methods: [POST]
+
+health_check:
+    path: /
+    controller: App\Controller\AiController::healthCheck
+    methods: [GET]

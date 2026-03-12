@@ -1,0 +1,23 @@
+parameters:
+    gemini_api_key: '%env(GEMINI_API_KEY)%'
+    gemini_model: '%env(GEMINI_MODEL)%'
+    backend_api_url: '%env(BACKEND_API_URL)%'
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/Kernel.php'
+
+    App\Service\GeminiService:
+        arguments:
+            $apiKey: '%gemini_api_key%'
+            $model: '%gemini_model%'
+
+    App\Service\FaqService:
+        arguments:
+            $backendApiUrl: '%backend_api_url%'

@@ -57,7 +57,29 @@ npm run dev
 
 Admin panel sẽ chạy tại: http://localhost:5173
 
-## Test API với Postman
+### Bước 4: Setup AI Service (PHP Symfony)
+
+```bash
+cd ai-service
+composer install
+cp .env.example .env
+```
+
+Sửa file `.env` với Gemini API key của bạn:
+```
+GEMINI_API_KEY=your-gemini-api-key-here
+```
+
+Lấy Gemini API key miễn phí tại: https://makersuite.google.com/app/apikey
+
+Chạy server:
+```bash
+php -S localhost:8000 -t public
+```
+
+AI Service sẽ chạy tại: http://localhost:8000
+
+## Test AI Service với Postman
 
 ### 1. Lấy danh sách FAQs
 ```
@@ -95,9 +117,34 @@ Content-Type: application/json
 DELETE http://localhost:3000/api/faqs/1
 ```
 
+### 5. Test AI Service
+```
+POST http://localhost:8000/api/get-answer
+Content-Type: application/json
+
+{
+  "question": "Cửa hàng mở cửa lúc mấy giờ?"
+}
+```
+
+Response:
+```json
+{
+  "success": true,
+  "data": {
+    "question": "Cửa hàng mở cửa lúc mấy giờ?",
+    "answer": "Chúng tôi mở cửa từ 8:00 đến 21:00 mỗi ngày kể cả cuối tuần.",
+    "session_id": "session_xxx",
+    "timestamp": "2024-01-01 10:00:00"
+  }
+}
+```
+
 ## Các bước tiếp theo
 
-- [ ] Bước 3: Build AI Microservice (PHP Symfony + OpenAI)
+- [x] Bước 1: Backend ExpressJS + MySQL ✅
+- [x] Bước 2: Admin Frontend Vue.js ✅
+- [x] Bước 3: AI Microservice (PHP Symfony + OpenAI) ✅
 - [ ] Bước 4: Setup n8n Workflow
 - [ ] Bước 5: Build Livechat Frontend
 
@@ -106,5 +153,5 @@ DELETE http://localhost:3000/api/faqs/1
 - Backend: Node.js + Express.js
 - Database: MySQL 8.0
 - Admin Frontend: Vue.js 3 + Vite
-- AI Service: PHP 8.3 + Symfony (coming soon)
+- AI Service: PHP 8.3 + Symfony + Google Gemini
 - Workflow: n8n (coming soon)
