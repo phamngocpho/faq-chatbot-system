@@ -36,8 +36,14 @@ else
     echo "[2/5] .env file already exists"
 fi
 
-# Update livechat webhook URL
-echo "[3/5] Updating livechat configuration..."
+# Create admin-frontend .env
+echo "Creating admin-frontend .env..."
+cat > admin-frontend/.env <<EOF
+VITE_API_URL=http://$VPS_IP:3000/api
+EOF
+
+# Update URLs with VPS IP
+echo "[3/5] Updating configuration files..."
 sed -i "s|http://localhost:5678|http://$VPS_IP:5678|g" livechat/script.js
 
 # Setup firewall
