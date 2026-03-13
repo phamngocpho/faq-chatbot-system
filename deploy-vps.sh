@@ -59,6 +59,7 @@ ufw --force enable
 # Start all services
 echo "[5/5] Starting all services..."
 docker-compose down 2>/dev/null || true
+docker system prune -f 2>/dev/null || true
 docker-compose up -d --build
 
 # Wait for services to start
