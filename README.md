@@ -154,16 +154,20 @@ Response:
 - [x] Step 1: Backend ExpressJS + MySQL
 - [x] Step 2: Admin Frontend Vue.js
 - [x] Step 3: AI Microservice (PHP Symfony + Gemini)
-- [ ] Step 4: n8n Workflow Automation
-- [ ] Step 5: Livechat Frontend
+- [x] Step 4: n8n Workflow Automation
+- [x] Step 5: Livechat Frontend
+- [x] Docker Compose Integration
+- [x] VPS Deployment Automation
 
 ## Tech Stack
 
 - **Backend**: Node.js + Express.js
-- **Database**: MySQL 8.0
+- **Database**: MySQL 8.0 (Docker)
 - **Admin Frontend**: Vue.js 3 + Vite
 - **AI Service**: PHP 8.2+ + Symfony + Google Gemini
-- **Workflow**: n8n (coming soon)
+- **Workflow**: n8n (Docker)
+- **Livechat**: Vanilla JavaScript
+- **Deployment**: Docker Compose
 
 ## Low-Code/No-Code Principles
 
@@ -183,6 +187,9 @@ This project demonstrates:
 - RESTful API architecture
 - Session tracking
 - Keyword-based search optimization
+- Docker containerization
+- One-command VPS deployment
+- Automated workflow with n8n
 
 ## Contributing
 
