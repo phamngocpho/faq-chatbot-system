@@ -151,9 +151,9 @@ Response:
 
 ## Development Roadmap
 
-- [x] Step 1: Backend ExpressJS + MySQL ✅
-- [x] Step 2: Admin Frontend Vue.js ✅
-- [x] Step 3: AI Microservice (PHP Symfony + Gemini) ✅
+- [x] Step 1: Backend ExpressJS + MySQL
+- [x] Step 2: Admin Frontend Vue.js
+- [x] Step 3: AI Microservice (PHP Symfony + Gemini)
 - [ ] Step 4: n8n Workflow Automation
 - [ ] Step 5: Livechat Frontend
 
@@ -176,13 +176,13 @@ This project demonstrates:
 
 ## Features
 
-- ✅ CRUD operations for FAQ management
-- ✅ Category-based organization
-- ✅ AI-powered responses using Google Gemini
-- ✅ Modern, minimal admin interface
-- ✅ RESTful API architecture
-- ✅ Session tracking
-- ✅ Keyword-based search optimization
+- CRUD operations for FAQ management
+- Category-based organization
+- AI-powered responses using Google Gemini
+- Modern, minimal admin interface
+- RESTful API architecture
+- Session tracking
+- Keyword-based search optimization
 
 ## Contributing
 

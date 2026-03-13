@@ -32,13 +32,13 @@ const API_URL = 'http://localhost:3000/api';
 
 ## Features
 
-- ✅ Create, Read, Update, Delete FAQs
-- ✅ Category management
-- ✅ Modern, minimal UI design
-- ✅ Responsive layout
-- ✅ Real-time data updates
-- ✅ Form validation
-- ✅ Error handling
+- Create, Read, Update, Delete FAQs
+- Category management
+- Modern, minimal UI design
+- Responsive layout
+- Real-time data updates
+- Form validation
+- Error handling
 
 ## Tech Stack
 
