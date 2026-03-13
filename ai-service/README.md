@@ -6,7 +6,7 @@ AI-powered service for processing user questions and generating intelligent resp
 
 - PHP 8.2 or higher
 - Composer
-- Google Gemini API Key (free at https://makersuite.google.com/app/apikey)
+- Google Gemini API Key (free at https://aistudio.google.com/api-keys)
 
 ## Installation
 
@@ -40,7 +40,7 @@ symfony server:start
 
 ## Getting Gemini API Key
 
-1. Visit: https://makersuite.google.com/app/apikey
+1. Visit: https://aistudio.google.com/api-keys
 2. Sign in with Google Account
 3. Click "Create API Key"
 4. Copy key and paste into `.env` file

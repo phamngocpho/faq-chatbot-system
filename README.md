@@ -79,7 +79,7 @@ Configure `.env` with your Gemini API key:
 GEMINI_API_KEY=your-gemini-api-key-here
 ```
 
-Get free Gemini API key at: https://makersuite.google.com/app/apikey
+Get free Gemini API key at: https://aistudio.google.com/api-keys
 
 Start the server:
 ```bash
