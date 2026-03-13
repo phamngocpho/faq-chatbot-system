@@ -1,5 +1,5 @@
 // Configuration
-const N8N_WEBHOOK_URL = 'http://localhost:5678/webhook-test/chatbot-webhook';
+const N8N_WEBHOOK_URL = 'http://localhost:5678/webhook/chatbot-webhook';
 const SESSION_ID = generateSessionId();
 
 // DOM Elements
