@@ -3,7 +3,7 @@
 
 const CONFIG = {
   // n8n webhook URL
-  N8N_WEBHOOK_URL: 'http://localhost:5678/webhook/chatbot-webhook',
+  N8N_WEBHOOK_URL: 'http://localhost:5678/webhook-test/chatbot-webhook',
   
   // Alternative: Direct AI Service (bypass n8n)
   // AI_SERVICE_URL: 'http://localhost:8000/api/get-answer',

@@ -1,5 +1,5 @@
 // Configuration
-const N8N_WEBHOOK_URL = 'http://localhost:5678/webhook/chatbot-webhook';
+const N8N_WEBHOOK_URL = 'http://localhost:5678/webhook-test/chatbot-webhook';
 const SESSION_ID = generateSessionId();
 
 // DOM Elements
@@ -87,7 +87,9 @@ async function sendMessage(question) {
 
     const data = await response.json();
     
-    if (data.success && data.answer) {
+    if (data.success && data.data && data.data.answer) {
+      return data.data.answer;
+    } else if (data.answer) {
       return data.answer;
     } else {
       throw new Error('Invalid response format');
