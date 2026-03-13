@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ Chatbot</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">
+      <h1>FAQ Assistant</h1>
+      <p>Ask me anything about our store</p>
+    </div>
+    
+    <div class="chat-messages" id="chatMessages">
+      <div class="message bot-message">
+        <div class="message-content">
+          Hello! I'm your FAQ assistant. How can I help you today?
+        </div>
+        <div class="message-time">Just now</div>
+      </div>
+    </div>
+    
+    <div class="chat-input-container">
+      <form id="chatForm">
+        <input 
+          type="text" 
+          id="messageInput" 
+          placeholder="Type your question..."
+          autocomplete="off"
+          required
+        >
+        <button type="submit" id="sendButton">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+          </svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
