@@ -79,6 +79,21 @@ services:
     networks:
       - faq-network
 
+  # Admin Frontend
+  admin-frontend:
+    image: node:18-alpine
+    container_name: faq-admin-frontend
+    working_dir: /app
+    command: sh -c "npm install && npm run dev"
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./admin-frontend:/app
+    environment:
+      - VITE_API_URL=http://localhost:3000/api
+    networks:
+      - faq-network
+
 volumes:
   mysql_data:
   n8n_data:

@@ -44,6 +44,7 @@ sed -i "s|http://localhost:5678|http://$VPS_IP:5678|g" livechat/script.js
 echo "[4/5] Configuring firewall..."
 ufw allow 22
 ufw allow 3000
+ufw allow 5173
 ufw allow 5678
 ufw allow 8000
 ufw allow 8080
@@ -70,16 +71,19 @@ echo "Deployment Complete!"
 echo "================================"
 echo ""
 echo "Access your application:"
-echo "  Backend API:    http://$VPS_IP:3000"
-echo "  n8n:            http://$VPS_IP:5678"
-echo "  AI Service:     http://$VPS_IP:8000"
-echo "  Livechat:       http://$VPS_IP:8080"
+echo "  Backend API:      http://$VPS_IP:3000"
+echo "  Admin Frontend:   http://$VPS_IP:5173"
+echo "  n8n:              http://$VPS_IP:5678"
+echo "  AI Service:       http://$VPS_IP:8000"
+echo "  Livechat:         http://$VPS_IP:8080"
 echo ""
-echo "Next steps:"
-echo "  1. Open n8n: http://$VPS_IP:5678"
-echo "  2. Import workflow from n8n-workflow/workflow.json"
-echo "  3. Click 'Active' to enable workflow"
-echo "  4. Start livechat: cd livechat && python3 -m http.server 8080"
+echo "IMPORTANT: Setup n8n workflow (from your Windows browser):"
+echo "  1. Open http://$VPS_IP:5678 in your browser"
+echo "  2. Click 'Add workflow' button"
+echo "  3. Click menu (3 dots) > Import from File"
+echo "  4. Select n8n-workflow/workflow.json from your local machine"
+echo "  5. Click 'Active' toggle to enable the workflow"
+echo "  6. Verify in logs: docker logs n8n | grep 'Activated workflow'"
 echo ""
 echo "View logs: docker-compose logs -f"
 echo "Restart: docker-compose restart"
