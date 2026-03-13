@@ -66,6 +66,19 @@ services:
     networks:
       - faq-network
 
+  # Livechat
+  livechat:
+    image: python:3.9-alpine
+    container_name: faq-livechat
+    working_dir: /app
+    command: python -m http.server 8080
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./livechat:/app
+    networks:
+      - faq-network
+
 volumes:
   mysql_data:
   n8n_data:

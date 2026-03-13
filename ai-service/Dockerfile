@@ -15,6 +15,9 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Copy application
 COPY . .
 
+# Create empty .env file
+RUN touch .env
+
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
 
