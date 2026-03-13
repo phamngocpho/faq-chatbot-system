@@ -9,9 +9,17 @@ const pool = mysql.createPool({
   database: process.env.DB_NAME || 'faq_chatbot',
   port: process.env.DB_PORT || 3306,
   charset: 'utf8mb4',
+  connectTimeout: 10000,
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0
+});
+
+// Set charset for all connections
+pool.on('connection', (connection) => {
+  connection.query('SET NAMES utf8mb4');
+  connection.query('SET CHARACTER SET utf8mb4');
+  connection.query('SET character_set_connection=utf8mb4');
 });
 
 // Test connection

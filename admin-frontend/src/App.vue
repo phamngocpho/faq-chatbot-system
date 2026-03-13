@@ -83,6 +83,7 @@ import axios from 'axios';
 // Configure axios to handle UTF-8
 axios.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
 axios.defaults.headers.common['Accept'] = 'application/json; charset=utf-8';
+axios.defaults.headers.common['Cache-Control'] = 'no-cache';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
 
