@@ -39,6 +39,8 @@ services:
     ports:
       - "8000:8000"
     environment:
+      - APP_ENV=prod
+      - APP_SECRET=change-this-secret-key
       - GEMINI_API_KEY=${GEMINI_API_KEY}
       - GEMINI_MODEL=gemini-2.5-flash
       - BACKEND_API_URL=http://backend:3000/api
